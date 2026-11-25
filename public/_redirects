@@ -1,0 +1,3 @@
+# Netlify: proxy the API under the same origin (avoids CORS), then SPA fallback.
+/api/*  https://mrksz-webapp-appserver-od67o.ondigitalocean.app/:splat  200
+/*      /index.html  200
