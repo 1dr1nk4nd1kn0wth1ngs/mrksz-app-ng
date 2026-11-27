@@ -289,8 +289,7 @@ const cupGroups = [
 const ga2M = groupMatches([ga[1], ga[2], ga[0]], -16)
 const allMatches = [...nb1Matches, ...gaM, ...gbM, ...ga2M, semi1, semi2, final, bronze]
 const cupTop10 = () => {
-  const ms = competitionDetail(2).competition.groups.flatMap((g) => g.matches)
-  return stats([...ms, ...allMatches.filter((m) => m.competition?.id === 2)])
+  return stats(allMatches.filter((m) => m.competition?.id === 2))
     .sort((a, b) => b.points + b.assists - (a.points + a.assists))
     .slice(0, 10)
 }
@@ -303,7 +302,7 @@ const stats = (ms) => {
   const map = new Map()
   for (const m of ms)
     for (const e of [...m.homeLineUp, ...m.awayLineUp]) {
-      const s = map.get(e.playerId) ?? { name: e.name, played: 0, points: 0, assists: 0 }
+      const s = map.get(e.playerId) ?? { name: e.name, playerId: e.playerId, played: 0, points: 0, assists: 0 }
       s.played++
       s.points += e.points
       s.assists += e.assists
