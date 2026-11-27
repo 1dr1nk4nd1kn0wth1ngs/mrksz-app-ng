@@ -66,10 +66,9 @@ npm run build        # production build in dist/
 
 ## Deployment
 
-The app calls the API under `/api` on its own origin, which avoids depending on the backend's CORS policy:
+The app is hosted on Netlify. Connect the repository in Netlify. `netlify.toml` sets the build command (`npm run build`), the publish directory (`dist`) and the Node version.
 
-- **Netlify:** `public/_redirects` already proxies `/api/*` to the backend and adds the SPA fallback.
-- **Other hosts:** proxy `/api/*` to `https://mrksz-webapp-appserver-od67o.ondigitalocean.app/*`, or build with `VITE_API_BASE=<backend URL>` if the backend allows your origin.
+The app calls the API under `/api` on its own origin, so the backend's CORS policy does not apply. `public/_redirects` proxies `/api/*` to `https://mrksz-webapp-appserver-od67o.ondigitalocean.app/*` and adds the SPA fallback to `index.html`.
 
 Live updates connect straight to the backend's SignalR hub (`VITE_HUB_URL`). If the socket fails, the match page polls every 30 seconds instead.
 

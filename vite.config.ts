@@ -8,7 +8,6 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const target = env.MRKSZ_UPSTREAM || UPSTREAM
   return {
-    base: mode === 'production' ? '/mrksz-app-ng/' : '/',
     plugins: [react(), tailwindcss()],
     server: {
       // Same-origin proxy so local development is not subject to the backend's CORS policy.

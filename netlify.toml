@@ -1,0 +1,7 @@
+# The /api proxy and SPA fallback rules live in public/_redirects.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
